@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import classes from './DemoList.module.css';
 
 const DemoList = (props) => {
-  const sortedList = props.items.sort((a, b) => a - b);
+  const sortedList = useMemo(() => {
+    console.log('Items sorted');
+    return props.items.sort((a, b) => a - b);
+  }, [props.items]);
+  console.log('DemoList Running');
 
   return (
     <div className={classes.list}>
